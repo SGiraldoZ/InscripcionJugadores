@@ -35,3 +35,5 @@ def getNameWithoutExtension(fileName):
     else:
         return fileName
 
+if __name__ == '__main__':
+    print(hashPasswd("admin"))

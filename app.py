@@ -28,7 +28,7 @@ def login():
         print(request.form["email"] + "  :  "+ request.form["password"] + "\n" + hashPasswd(request.form["password"]))
         inputName = request.form["email"]
         if inputName == "admin":
-            if hashPasswd(request.form["password"]) == "04ec614eed673d26b74660602044740195302cce31372a6c7ac9dd155f58df91":
+            if hashPasswd(request.form["password"]) == "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918":
                 session["user"] = "admin"
                 return render_template("admin_home.html")
 
