@@ -7,8 +7,8 @@ def connect():
     conn = mysql.connector.connect(host = "localhost",
                                     database = "HandBallCup",
                                     user = "root",
-                                    password = "SQLroot1911"
-                                    )
+                                    password = "SQLSGZ1911*",
+                                   auth_plugin='mysql_native_password')
 
     
     return conn
