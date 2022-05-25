@@ -1,0 +1,121 @@
+<html>
+    <head>
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <style type="text/css">
+          img {
+        display : block;
+        margin : 0 auto;   
+          } 
+        </style>
+        <style>
+          .center100 {
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              width: 100%
+          }
+          .center {
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              width: 50%
+          }
+      </style>
+      </head>
+   <body>
+       
+        <div class ='row'>
+            <img src = 'http://medellinhandballcup.com/2018/wp-content/uploads/sites/18/2018/05/Header-WebLogoAzul4-3-01.png'>
+            </div>
+       
+            <style>
+                ul {
+                  list-style-type: none;
+                  margin: 20;
+                  padding: 0;
+                  overflow: hidden;
+                  background-color: rgb(51, 51, 153);
+                }
+                
+                li {
+                  float: left;
+                }
+                
+                li a {
+                  display: block;
+                  color: white;
+                  text-align: center;
+                  padding: 14px 16px;
+                  text-decoration: none;
+                }
+                
+                li a:hover {
+                  background-color:  blue;
+                }
+                </style>
+                
+                <ul>
+                  <li><a href="../admin_home.html">Inicio</a></li>
+                  <li><a href="../coaches">Entrenadores</a></li>
+                  <li><a href="../partidos">partidos</a></li>
+                  <li><a href="../goles">Goles</a></li>
+                  <li><a href="../agregar_personas">Agregar vistantes</a></li>
+                </ul>
+
+        <br>
+       <div class ='center'>
+          {% if 'toEditCoach' in request.url %}
+
+            {% for eresult in eresults %}
+        <form action = "editCoach" method = "POST">
+         <p>Usuario: <input class="form-control" type = "text" name = "UserName" style='width: 100%;' value='{{eresult["UserName"]}}'/></p>
+         <h6 style="color: red">Debe asignar una nueva contraseña para actualizar la información del entrenador</h6>
+         <p>Clave: <input class="form-control" type = "text" name = "Password" style='width: 100%;' value='nueva clave' /></p>
+         <input type ="hidden" name = "CoachKey" value='{{eresult["CoachKey"]}}' />
+         {% endfor %}
+        
+
+         <br>
+
+         <p><input class="btn-primary" type = "submit" value = "Actualizar Información" /></p>
+        </form>
+
+        {% else %}      
+
+        <form action = "insertNewCoach" method = "POST">
+         <p>Usuario: <input class="form-control" type = "text" name = "UserName" style='width: 100%;' /></p>
+         <p>Contraseña: <input class="form-control" type = "text" name = "Password" style='width: 100%;' /></p>
+         <br>
+
+         <p><input class="btn-primary" type = "submit" value = "Enviar" /></p>
+        </form>
+
+        {% endif %}
+      <br><br>
+       </div>
+       
+       <div class='center100'>
+      <table class = 'table table-hover' style = 'margin-left: 100px; margin-right: 100px; width: 90%;'>
+         <thead>
+            <tr>
+            <th>email</th>
+            </tr>
+         </thead>
+
+        {% for result in results: %}
+          <tr>
+            <td>{{result["UserName"]}}</td>
+            </form>
+            </td>
+            <td align="center"><a href="{{ url_for('toEditCoach', toEditCoachKey = result['CoachKey'])}}"><i class="fas fa-edit"></a></td>
+            <td align="center"><a href="{{ url_for('deleteCoach', toDeleteCoachKey = result['CoachKey'])}}"><i class="fas fa-trash-alt"></a></td>
+          </tr>
+        {% endfor %}
+        </table>
+    </div>
+  </body>
+</html>

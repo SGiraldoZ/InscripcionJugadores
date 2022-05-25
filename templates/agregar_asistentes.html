@@ -1,0 +1,148 @@
+<html>
+    <head>
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <style type="text/css">
+          img {
+        display : block;
+        margin : 0 auto;   
+          } 
+      </style>
+      <style>
+          .center {
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              width: 50%
+          }
+          .center100{
+              text-align: center;
+              margin-left: auto;
+              margin-right: auto;
+              width: 100%
+          }
+      </style>
+
+      </head>
+   <body>
+       
+        <div class ='row'>
+            <img src = 'http://medellinhandballcup.com/2018/wp-content/uploads/sites/18/2018/05/Header-WebLogoAzul4-3-01.png'>
+            </div>
+            <style>
+                ul {
+                  list-style-type: none;
+                  margin: 20;
+                  padding: 0;
+                  overflow: hidden;
+                  background-color: rgb(51, 51, 153);
+                }
+                
+                li {
+                  float: left;
+                }
+                
+                li a {
+                  display: block;
+                  color: white;
+                  text-align: center;
+                  padding: 14px 16px;
+                  text-decoration: none;
+                }
+                
+                li a:hover {
+                  background-color:  blue;
+                }
+                </style>
+                
+                <ul>
+                    <li><a href="../agregar_jugadores">Agregar jugadores</a></li>
+                    <li><a href="../agregarAsistentes">Agregar asistentes</a></li>
+                    <li><a href="../verJugadoresInscritos">Ver Jugadores Inscritos</a></li>
+                   </ul>
+                      <br>
+        <div class='center'>
+        <br>
+
+        {% if 'assistantToEdit' in request.url %}
+        <div class="alert alert-info" role="alert">
+         <strong>Editar informacion</strong>   Cambiar datos aqui ...
+        </div>
+
+        <form action = "AssistantEdit" method = "POST">
+         <p>Nombre: <input class="form-control" type = "text" name = "FirstName" style='width: 100%;' value='{{eresult["FirstName"]}}'/></p>
+         <p>Apellido: <input class="form-control" type = "text" name = "LastName" style='width: 100%;' value='{{eresult["LastName"]}}' /></p>
+         <p>Tipo de documento: <input class="form-control" type = "text" name = "IDType" style='width: 100%;' value='{{eresult["IDType"]}}' /></p>
+         <p>Identificacion: <input class="form-control" type ="text" name = "ID" style='width: 100%;' value='{{eresult["ID"]}}' /></p>
+
+         <input type ="hidden" name = "AssistantKey" value='{{eresult["AssistantKey"]}}' />
+
+
+
+
+         <br>
+
+         <p><input class="btn-primary" type = "submit" value = "Actualizar Información" /></p>
+        </form>
+
+        {% else %}
+
+        <div class="alert alert-info" role="alert">
+        <strong>Ingresar informacion</strong>   Agregar datos aqui ...
+        </div>
+        
+        <form action = "insertAssistant" method = "POST">
+         <p>Nombre: <input class="form-control" type = "text" name = "FirstName" style='width: 100%;' required/></p>
+         <p>Apellido: <input class="form-control" type = "text" name = "LastName" style='width: 100%;' required/></p>
+         <p>Tipo de documento: <select class="form-control" type = "number" name = "IDType" style='width: 100%;' required>
+          {% for IDType in IDTypes: %}
+          <option class="form-control" name="IDType" value="{{IDType['IDTypeKey']}}">{{IDType['IDType']}}</option>
+          {% endfor %}
+          </select>
+          </p>
+         <p>Identificacion: <input class="form-control" type ="text" name = "ID" style='width: 100%;' required/></p>
+         <br>
+
+         <p><input class="btn-primary" type = "submit" value = "Enviar" /></p>
+        </form>
+
+        {% endif %}
+        </div>
+        <div class='center100'>
+      <br><br>
+        <div class="alert alert-success" role="alert" style='width: 90%; margin-left: 100px;'>
+        <strong>Check it out!</strong> Here is your data table below ...
+        </div>
+
+      <table class = 'table table-hover' style = 'margin-left: 100px; margin-right: 100px; width: 90%;'>
+         <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Tipo de documento</th>
+            <th>Identificacion</th>
+            <th>Cargo</th>
+
+            </tr>
+         </thead>
+         {% for result in results: %}
+            <tr>
+               <td>{{result["FirstName"]}}</td>
+               <td>{{result["LastName"]}}</td>
+               <td>{{result['IDType']}}</td>
+               <td>{{result['ID']}}</td>
+               <td align="center"><a href = "{{ url_for('assistantToEdit', assistantKey=result['AssistantKey']) }}"><i class="fas fa-edit"></a></td>
+               <td align="center"><a href = "{{ url_for('assistantDelete', dAssistantKey=result['AssistantKey']) }}"><i class="fas fa-trash-alt"></a></td>
+            </tr>
+            {% endfor %}
+      </table>
+    </div>
+    </body>
+</html>
+
+
+
+  

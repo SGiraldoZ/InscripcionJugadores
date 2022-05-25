@@ -1,0 +1,88 @@
+<html>
+    <head>
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <style>
+            .center {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%
+            }
+        </style>
+      </head>
+   <body>
+       
+        <div class ='row'>
+            <div style="margin-left: auto; margin-right: auto;">
+            <img src = 'http://medellinhandballcup.com/2018/wp-content/uploads/sites/18/2018/05/Header-WebLogoAzul4-3-01.png'>
+            </div>
+        </div>
+        <style>.floatLeft { width: 50%; float: left; }
+            .floatRight {width: 50%; float: right; }
+            .container { overflow: hidden; }
+            </style>
+<style>
+ul {
+  list-style-type: none;
+  margin: 20;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(51, 51, 153);
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color:  blue;
+}
+</style>
+
+
+
+<div class="container">
+    <div class="floatLeft">
+        <table class = 'table table-hover' >
+            <tr>
+                <th>Equipo1</th>
+                <th>Nombre</th>
+                <th>Goles</th>
+            </tr>
+            <tr>
+                <td>_____________</td>
+                <td>{{result["FirstName"]}}</td>
+                <td><input class="form-control" type = "value" name = "Goles1" style='width: 100%;'</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="floatRight">
+        <table class = 'table table-hover' >
+            <tr>
+                <th>equipo2</th>
+                <th>Nombre</th>
+                <th>Goles</th>
+            </tr>
+            <tr>
+                    <td>_____________</td>
+                    <td>{{result["FirstName"]}}</td>
+                    <td><input class="form-control" type = "value" name = "Goles2" style='width: 100%;'</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+  </body>
+</html>
