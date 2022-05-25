@@ -478,7 +478,7 @@ def updatePlayer():
                                 WHERE PlayerKey = %s;''',(newURL,playerKey))
                 else:
                     print ("no toca borrar")
-                    newURL = getNameWithoutExtension(pictureURL)+(getExtension(request.files['playerPicture'].filename))
+                    newURL = getNameWithoutExtension(pictureURL)+"."+(getExtension(request.files['playerPicture'].filename))
                     print ("voy a guardar la imagen en: " + newURL)
                     request.files["playerPicture"].save(newURL)
                     print("ya la guardé")

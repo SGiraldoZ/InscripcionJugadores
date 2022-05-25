@@ -4,11 +4,10 @@ import mysql.connector
 #crear la conexión
 
 def connect():
-    conn = mysql.connector.connect(host = "localhost",
-                                    database = "HandBallCup",
-                                    user = "root",
-                                    password = "SQLSGZ1911*",
-                                   auth_plugin='mysql_native_password')
+    conn = mysql.connector.connect(host = "sebas042000.mysql.pythonanywhere-services.com",
+                                    database = "sebas042000$HandBallCup",
+                                    user = "sebas042000",
+                                    password = "sqlPassword")
 
     
     return conn
